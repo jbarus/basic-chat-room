@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class ChatWindow extends JFrame {
     private JPanel panel;
@@ -33,7 +35,15 @@ public class ChatWindow extends JFrame {
         setLocationRelativeTo(null);
         setContentPane(panel);
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                Main.closeConnection();
+            }
+        });
+
         setVisible(true);
 
         messageTF.requestFocus();
@@ -41,6 +51,7 @@ public class ChatWindow extends JFrame {
 
     private void btnClicked() {
         if(!messageTF.getText().isEmpty()){
+            Main.sendMessage(messageTF.getText());
             convTA.append(messageTF.getText()+"\n");
             messageTF.setText("");
         }
