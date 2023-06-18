@@ -19,7 +19,6 @@ public class Main {
             client = new Client(new Socket(address,port),username);
         }catch (Exception e){
             e.getMessage();
-            System.exit(10);
         }
 
         ChatWindow chatWindow = new ChatWindow(client);

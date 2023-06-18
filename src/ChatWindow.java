@@ -14,7 +14,7 @@ public class ChatWindow extends JFrame {
 
     public ChatWindow(Client client){
         this.client = client;
-        client.listenForMsg();
+        client.listenForMsg(convTA);
 
         initWindow();
         intiComponents();

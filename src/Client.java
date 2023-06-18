@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
 
@@ -14,11 +15,11 @@ public class Client {
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
         }catch (Exception e){
-            e.getMessage();
+            closeConnection();
         }
     }
 
-    public void listenForMsg(){
+    public void listenForMsg(JTextArea convTA){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -26,9 +27,10 @@ public class Client {
                 while (socket.isConnected()){
                     try{
                         msgReceived = bufferedReader.readLine();
-                        System.out.println(msgReceived);
+
+                        convTA.append(msgReceived+ "\n");
                     }catch (Exception e){
-                        e.getMessage();
+                        closeConnection();
                     }
 
                 }
@@ -42,7 +44,7 @@ public class Client {
             bufferedWriter.newLine();
             bufferedWriter.flush();
         }catch (Exception e){
-            e.getMessage();
+            closeConnection();
         }
     }
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="85a01dff-8f26-4664-ab4a-9b96eeb7832d" name="Changes" comment="Server connection has been added">
-      <change afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+    <list default="true" id="85a01dff-8f26-4664-ab4a-9b96eeb7832d" name="Changes" comment="Added the ability to support multiple clients">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChatWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687006277415</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added the ability to support multiple clients">
+      <created>1687092320447</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1687092320447</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -101,6 +108,7 @@
     <MESSAGE value="Changes made:&#10;- Basic gui was added using GUI Form.&#10;- Basic properties were set." />
     <MESSAGE value="Basic functionalities have been added" />
     <MESSAGE value="Server connection has been added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Server connection has been added" />
+    <MESSAGE value="Added the ability to support multiple clients" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the ability to support multiple clients" />
   </component>
 </project>
