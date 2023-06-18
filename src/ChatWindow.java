@@ -3,6 +3,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class ChatWindow extends JFrame {
+
+    Client client;
     private JPanel panel;
     private JTextField messageTF;
     private JTextArea convTA;
@@ -10,7 +12,10 @@ public class ChatWindow extends JFrame {
     private JScrollPane scroller;
 
 
-    public ChatWindow(){
+    public ChatWindow(Client client){
+        this.client = client;
+        client.listenForMsg();
+
         initWindow();
         intiComponents();
     }
@@ -40,7 +45,7 @@ public class ChatWindow extends JFrame {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
-                Main.closeConnection();
+                client.closeConnection();
             }
         });
 
@@ -51,7 +56,7 @@ public class ChatWindow extends JFrame {
 
     private void btnClicked() {
         if(!messageTF.getText().isEmpty()){
-            Main.sendMessage(messageTF.getText());
+            client.sendMsg(messageTF.getText());
             convTA.append(messageTF.getText()+"\n");
             messageTF.setText("");
         }
