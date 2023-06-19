@@ -57,7 +57,7 @@ public class ChatWindow extends JFrame {
     private void btnClicked() {
         if(!messageTF.getText().isEmpty()){
             client.sendMsg(messageTF.getText());
-            convTA.append(messageTF.getText()+"\n");
+            convTA.append(client.username+": "+messageTF.getText()+"\n");
             messageTF.setText("");
         }
         messageTF.requestFocus();
