@@ -1,12 +1,16 @@
 import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
+import java.nio.ByteBuffer;
+import java.security.*;
+import java.security.spec.X509EncodedKeySpec;
 
 public class Client {
     Socket socket;
     BufferedWriter bufferedWriter;
     BufferedReader bufferedReader;
     String username;
+    EncryptionHandler encryptionHandler;
 
     public Client(Socket socket, String username) {
         try {
@@ -14,6 +18,8 @@ public class Client {
             this.username = username;
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+
+            encryptionHandler = new EncryptionHandler(socket,bufferedReader);
 
             bufferedWriter.write(username);
             bufferedWriter.newLine();
@@ -32,6 +38,7 @@ public class Client {
                 while (socket.isConnected()){
                     try{
                         msgReceived = bufferedReader.readLine();
+                        msgReceived = encryptionHandler.decryptData(msgReceived);
 
                         convTA.append(msgReceived+ "\n");
                     }catch (Exception e){
@@ -45,6 +52,7 @@ public class Client {
 
     public void sendMsg(String msgToSend){
         try {
+            msgToSend = encryptionHandler.encryptData(msgToSend);
             bufferedWriter.write(msgToSend);
             bufferedWriter.newLine();
             bufferedWriter.flush();
